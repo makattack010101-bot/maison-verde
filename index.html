@@ -13,13 +13,18 @@
       gtag('config', 'G-20TJN80ZZ2');
     </script>
     
-    <!-- Fin Google Analytics -->
-      
-    <meta charset="UTF-8">
+        <!-- Fin Google Analytics -->
+
+        <!-- SEO: canonical, hreflang, robots -->
+        <link rel="canonical" href="https://la-maison-verde.netlify.app/">
+        <link rel="alternate" hreflang="fr" href="https://la-maison-verde.netlify.app/">
+        <meta name="robots" content="index, follow">
+
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Maison Verde | Restaurant Gastronomique & Jardin Culinaire à Kinshasa </title>
-    <meta name="description" content="Découvrez La Maison Verde à Kinshasa. Une expérience culinaire unique alliant produits frais du jardin et haute gastronomie. Réservez votre table en ligne.">
-    <meta name="keywords" content="restaurant Toronto, gastronomie, produits frais, La Maison Verde, réservation restaurant, cuisine jardin">
+    <meta name="description" content="Découvrez La Maison Verde, restaurant gastronomique à Kinshasa — cuisine farm-to-table avec produits locaux et réservation en ligne.">
+    <meta name="keywords" content="restaurant Kinshasa, gastronomie, produits frais, La Maison Verde, réservation restaurant, cuisine jardin">
     
     <!-- Open Graph -->
     <meta property="og:title" content="La Maison Verde | Restaurant Gastronomique à Kinshasa">
@@ -38,42 +43,48 @@
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "La Maison Verde",
-      "image": "https://maison-verde.netlify.app/assets/images/hero.jpg",
-      "@id": "https://maisonverde.example",
-      "url": "https://maisonverde.example",
-      "telephone": "+16475551234",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "123 Eco Avenue",
-        "addressLocality": "Kinshasa",
-        "addressRegion": "ON",
-        "postalCode": "M5V 2L7",
-        "addressCountry": "Cd"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 43.6532,
-        "longitude": -79.3832
-      },
-      "openingHoursSpecification": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "11:30",
-          "closes": "22:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Sunday",
-          "opens": "11:00",
-          "closes": "15:00"
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "La Maison Verde",
+            "image": "https://la-maison-verde.netlify.app/assets/images/hero.jpg",
+            "@id": "https://la-maison-verde.netlify.app/",
+            "url": "https://la-maison-verde.netlify.app/",
+            "telephone": "+243899123456",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "12 Boulevard du Jardin, Commune de la Gombe",
+                "addressLocality": "Kinshasa",
+                "addressRegion": "Kinshasa",
+                "postalCode": "00000",
+                "addressCountry": "CD"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -4.322447,
+                "longitude": 15.313572
+            },
+            "openingHoursSpecification": [
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                    "opens": "11:30",
+                    "closes": "22:00"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "Sunday",
+                    "opens": "11:00",
+                    "closes": "15:00"
+                }
+            ],
+            "priceRange": "FC",
+            "servesCuisine": ["Gastronomie","Cuisine africaine","Farm-to-table"],
+            "sameAs": [
+                "https://instagram.com/maisonverde.to",
+                "https://facebook.com/maisonverde.to"
+            ]
         }
-      ]
-    }
     </script>
 </head>
 <div class="body-overlay"></div>
