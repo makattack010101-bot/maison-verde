@@ -35,7 +35,7 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="./css/style.css">
@@ -87,30 +87,42 @@
         }
     </script>
 </head>
-<div class="body-overlay"></div>
-<body>
-    <p class="info-over">Ce site est un projet fictif pour portfolio , plus d'infos dans le pied de page.</p>
+<body class="overlay-active">
+    <div id="site-overlay" class="site-overlay">
+        <div class="overlay-content">
+            <i class="fas fa-leaf overlay-icon"></i>
+            <h1>La Maison Verde</h1>
+            <p><strong>Note importante :</strong> Ce site est un projet fictif réalisé à des fins de démonstration.</p>
+            <p>Retrouvez plus d'informations détaillées dans le bas de page (footer).</p>
+            <div class="overlay-loader"></div>
+        </div>
+    </div>
     <header>
         <h2 class="logo">La maison <span>verde <i class="fas fa-leaf"></i></span></h2>
             <nav class="navigation">
-                <button id="btn-menu" aria-label="Menu principal" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="35px" fill="black"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></button>
+                <button id="btn-menu" aria-label="Menu principal" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="35px" fill="white"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></button>
                 <ul id="main-navigation">
-                    <li><a href="#" >Accueil</a></li>
-                    <li><a href="#">Menu</a></li>
-                    <li><a href="#">Galerie</a></li>
-                    <li><a href="#">Notre Histoire</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="btn-reserve">Réserver</a></li>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#signature">Notre Carte</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#evenements">Événements</a></li>
+                    <li><a href="#localisation">Contact</a></li>
+                    <li><a href="#reserver" class="btn-reserve">Réserver</a></li>
                 </ul>
             </nav>
     </header>
 
     <main>
         <section class="hero-section" >
-            <div class="hero-overlay"></div>
-            <div class="hero-content" >
-                <h1 class="slogan" data-animation="fadeInUp">L'Équilibre Parfait entre Nature & Saveurs</h1>
-                <p data-animation="fadeInUp">Une cuisine éthique et raffinée au cœur de Kinshasa.</p>
+            <video autoplay muted loop playsinline style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;" poster="assets/images/hero-chicken.jpg">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-professional-chef-cooking-in-a-restaurant-kitchen-39535-large.mp4" type="video/mp4">
+            </video>
+             
+            <div style="position: relative; z-index: 1;">
+                <h1 class="slogan" data-animation="fadeInUp">L'harmonie de la nature, <span style="color: var(--primary);">savourée</span> à chaque bouchée</h1>
+
+                <p data-animation="fadeInUp">Découvrez le goût authentique du poulet braisé aux herbes de notre jardin.</p>
+
                 <div class="hero-info">
                     <div class="info-item" data-animation="fadeInUp">
                         <i class="fas fa-star"></i>
@@ -122,9 +134,10 @@
                         <span>11:30h - 22h, fermé le lundi</span>
                     </div>
                 </div>
+
                 <div class="hero-btn">
-                    <a href="#" class="cta-decouvrir" data-animation="fadeInUp">Découvrir le Menu</a>
-                    <a href="#" class="cta-reserver" data-animation="fadeInUp">Réserver une Table</a>
+                    <a href="#signature" class="cta-primary" data-animation="fadeInUp">Découvrir le Menu</a>
+                    <a href="#reserver" class="cta-second" data-animation="fadeInUp">Réserver une Table</a>
                 </div>
             </div>
         </section>        
@@ -132,10 +145,10 @@
         <section class="sect-special" >
             <div class="special-grid">
                 <div class="special-img" data-animation="fadeInUp">
-                    <img src="./assets/images/signature-2.jpg" alt="Intérieur du restaurant" loading="lazy">
-                    <img src="./assets/images/signature-3.jpg" alt="Plat signature" loading="lazy">
-                    <img src="./assets/images/signature-4.jpg" alt="Chef au travail" loading="lazy">
-                    <img src="./assets/images/signature-5.jpg" alt="Cocktail maison" loading="lazy">
+                    <img src="assets/images/restaurant.jpg" alt="Intérieur du restaurant" loading="lazy">
+                    <img src="assets/images/galerie-2.jpg" alt="Plat signature" loading="lazy">
+                    <img src="assets/images/galerie-3.jpg" alt="Chef au travail" loading="lazy">
+                    <img src="assets/images/cocktail.jpg" alt="Cocktail maison" loading="lazy">
                 </div>
                 <div class="special-content"  data-animation="fadeInUp">
                     <h2>Bienvenue chez vous</h2>
@@ -147,37 +160,93 @@
         </section>
 
         <!-- SECTION: NOS PLATS SIGNATURE -->
-        <section class="signature-section" aria-labelledby="signature-title">
+        <section class="signature-section" id="signature" aria-labelledby="signature-title">
             <div class="signature-grid">
                 <article class="signature-card" data-animation="fadeInUp">
-                    <img src="./assets/images/signature-1.jpg" alt="Assiette signature: filet de bar, sauce herbacée" loading="lazy">
-                    <h3>Filet de bar aux herbes du jardin</h3>
-                    <p>Un équilibre délicat entre fraîcheur et finesse, servi avec un jus léger aux racines.</p>
+                    <img src="assets/images/chicken-braise.jpg" alt="Plat signature: Poulet braisé aux herbes" loading="lazy">
+                    <h3>Poulet Braisé aux herbes du jardin</h3>
+                    <p>Notre spécialité : un poulet fermier mariné 24h et grillé au feu de bois.</p>
                 </article>
                 <article class="signature-card" data-animation="fadeInUp">
-                    <img src="./assets/images/signature-2.jpg" alt="Plat signature: risotto aux champignons sauvages" loading="lazy">
+                    <img src="assets/images/galerie-5.jpg" alt="Plat signature: risotto aux champignons sauvages" loading="lazy">
                     <h3>Risotto aux champignons sauvages</h3>
                     <p>Arômes boisés, crémeux et cuisson parfaite — notre classique réconfortant.</p>
                 </article>
                 <article class="signature-card" data-animation="fadeInUp">
-                    <img src="./assets/images/signature-3.jpg" alt="Dessert signature: tartelette aux herbes et agrumes" loading="lazy">
+                    <img src="assets/images/tartelette.jpg" alt="Dessert signature: tartelette aux herbes et agrumes" loading="lazy">
                     <h3>Tartelette agrumes & herbes</h3>
-                    <p>Tensor de fraîcheur pour finir sur une note vive et herbacée.</p>
+                    <p>Une note de fraîcheur pour finir sur une note vive et herbacée.</p>
+                </article>
+                <article class="signature-card" data-animation="fadeInUp">
+                    <img src="assets/images/ribs.jpg" alt="Plat signature: Ribs fumés" loading="lazy">
+                    <h3>Ribs au Miel & Épices</h3>
+                    <p>Cuisson lente de 12h, une explosion de saveurs fumées et sucrées.</p>
                 </article>
             </div>
             <p class="signature-cta"><a href="menu.html">Voir le menu complet →</a></p>
+        </section>
+
+        <!-- SECTION: GALERIE D'AMBIANCE -->
+        <section class="gallery-section" id="galerie">
+            <h2 data-animation="fadeInUp" style="text-align: center;">Instantannés de La Maison Verde</h2>
+            <div class="gallery-grid" data-animation="fadeInUp">
+                <img src="assets/images/galerie-1.jpg" alt="Ambiance restaurant">
+                <img src="assets/images/galerie-2.jpg" alt="Préparation cuisine">
+                <img src="assets/images/galerie-3.jpg" alt="Détail table">
+                <img src="assets/images/galerie-4.jpg" alt="Service client">
+                <img src="assets/images/galerie-5.jpg" alt="Plat garni">
+                <img src="assets/images/galerie-6.jpg" alt="Terrasse">
+            </div>
         </section>
 
         <!-- SECTION: MEET THE CHEF -->
         <section class="chef-section" aria-labelledby="chef-title">
             <div class="chef-grid" data-animation="fadeInUp">
                 <div class="chef-photo">
-                    <img src="./assets/images/chef.jpg" alt="Portrait du chef en cuisine" loading="lazy">
+                    <img src="assets/images/chef-portrait.jpg" alt="Portrait du chef en cuisine" loading="lazy">
                 </div>
                 <div class="chef-bio" data-animation="fadeInUp">
                     <h2 id="chef-title">Rencontrez notre Chef</h2>
                     <p>Le Chef Anaïs Moreau unit savoir-faire classique et passion farm-to-table. Formée en Europe, elle orchestre une cuisine qui célèbre le produit et la saison.</p>
                     <p><a href="about.html" class="link-more">Lire son histoire et sa philosophie <i class="fas fa-arrow-right"></i></a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ÉVÉNEMENTS -->
+        <section class="events-section" id="evenements">
+            <div class="events-container">
+                <h2 data-animation="fadeInUp">Vos Événements à La Maison Verde</h2>
+                <p class="section-subtitle" data-animation="fadeInUp">Privatisez notre jardin ou nos salles pour des moments inoubliables.</p>
+                
+                <div class="events-grid">
+                    <article class="event-card" data-animation="fadeInUp">
+                        <div class="event-img">
+                            <img src="assets/images/event-mariage.jpg" alt="Mariages">
+                        </div>
+                        <div class="event-content">
+                            <h3>Mariages & Réceptions</h3>
+                            <p>Un cadre idyllique en plein cœur de Kinshasa pour célébrer votre union dans un écrin de verdure.</p>
+                        </div>
+                    </article>
+                    <article class="event-card" data-animation="fadeInUp">
+                        <div class="event-img">
+                            <img src="assets/images/event-corporate.jpg" alt="Corporate">
+                        </div>
+                        <div class="event-content">
+                            <h3>Événements Corporate</h3>
+                            <p>Déjeuners d'affaires, lancements de produits et séminaires d'exception dans un environnement stimulant.</p>
+                        </div>
+                    </article>
+                    <article class="event-card" data-animation="fadeInUp">
+                        <div class="event-img">
+                            <img src="assets/images/event-prive.jpg" alt="Privé">
+                        </div>
+                        <div class="event-content">
+                            <h3>Dîners Privés</h3>
+                            <p>Une table exclusive et un menu sur mesure pour vos célébrations les plus intimistes.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -220,6 +289,16 @@
                 </div>
             </div>
         </section>
+        <section class="localisation-section" id="localisation">
+            <h2 class="produits-title">Nous Trouver</h2>
+            <div class="address-details" data-animation="fadeInUp">
+                <p><i class="fas fa-map-marker-alt"></i> Limete, 13ème rue </p>
+                <p style="margin-top: 10px;"><i class="fas fa-phone"></i> +243 81 23 45 68 9</p>
+            </div>
+            <div class="map-container" data-animation="fadeInUp">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15913.9628!2d15.3344!3d-4.3541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a3106540c309b%3A0xc6669925e0e0a5e!2sLimete%2C%20Kinshasa!5e0!3m2!1sfr!2scd!4v1709800000000!5m2!1sfr!2scd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
         <section class="formulaire" id="reserver" aria-label="formulaire de contact">
             <h2 class="form-title">Réservez une table dès maintenant</h2>
             <form action="https://formspree.io/f/mkgdzjvw" method="POST" class="contact-form" data-animation="fadeInUp">
@@ -253,7 +332,7 @@
                     <label for="time">Heure :</label>
                     <input type="time" id="time" name="time" min="11:00" max="22:00" required>
                 </div>
-                <button type="submit" class="btn-submit"><strong>terminer</strong></button>
+                <button type="submit" class="btn-submit"><strong>Réserver ma table</strong></button>
                 <p class="form-note">* Le restaurant est ouvert tous les jours à l'exception du vendredi. Vous recevrez un mail de confirmation de la réservation.</p>
             </form>
         </section>
@@ -285,7 +364,7 @@
         </div>
         <div class="footer-newsletter">
             <h4>Recevez nos nouveautés</h4>
-            <form action="#" method="post" class="newsletter-form" aria-label="Inscription newsletter">
+            <form action="https://formspree.io/f/mkgdzjvw" method="post" class="newsletter-form" aria-label="Inscription newsletter">
                 <input type="email" name="email" placeholder="Votre email" required>
                 <button type="submit">S'inscrire</button>
             </form>

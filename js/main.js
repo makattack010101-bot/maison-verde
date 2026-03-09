@@ -1,5 +1,17 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Overlay management
+  const overlay = document.getElementById('site-overlay');
+  if (overlay) {
+    setTimeout(() => {
+      overlay.classList.add('fade-out');
+      document.body.classList.remove('overlay-active');
+      setTimeout(() => {
+        overlay.remove();
+      }, 800); // Wait for transition to finish
+    }, 8000); // 8 seconds delay
+  }
+
   const btnMenu = document.getElementById('btn-menu');
   const navContent = document.getElementById('main-navigation');
   const navLinks = document.querySelectorAll('.navigation a');
@@ -40,15 +52,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Floating CTA: open reservation page or WhatsApp
+  // Floating CTA: Single Expandable FAB
   (function initFloatingCTA(){
     const container = document.createElement('div');
     container.className = 'floating-cta';
     container.innerHTML = `
-      <a class="cta-book" href="reservation.html" aria-label="Réserver une table">Réserver <i class="fas fa-calendar-check"></i></a>
-      <a class="cta-whatsapp" href="https://wa.me/16475551234?text=Bonjour%20La%20Maison%20Verde%2C%20je%20souhaite%20réserver" aria-label="Contact WhatsApp">WhatsApp <i class="fab fa-whatsapp"></i></a>
+      <div class="cta-menu">
+        <a class="cta-book" href="#reserver" title="Réserver"><i class="fas fa-calendar-check"></i></a>
+        <a class="cta-whatsapp" href="https://wa.me/243859367449" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <button class="cta-main" aria-label="Options de contact">
+        <i class="fas fa-comment-dots"></i>
+      </button>
     `;
     document.body.appendChild(container);
+
+    const mainBtn = container.querySelector('.cta-main');
+    mainBtn.addEventListener('click', () => {
+      container.classList.toggle('active');
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target)) {
+        container.classList.remove('active');
+      }
+    });
   })();
 
   // Lightbox for images
@@ -72,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.style.overflow = '';
     }
 
-    document.querySelectorAll('.signature-card img').forEach(el=>{
+    document.querySelectorAll('.signature-card img, .gallery-grid img').forEach(el=>{
       el.style.cursor = 'zoom-in';
       el.addEventListener('click', function(e){
         open(this.src, this.alt);
@@ -83,31 +112,31 @@ document.addEventListener('DOMContentLoaded', function() {
     lightbox.addEventListener('click', function(e){ if(e.target === lightbox) close(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   })();
-});
 
-document.addEventListener('DOMContentLoaded', function() {
+  // Intersection Observer for scroll animations
+  (function initScrollAnimations(){
     const serviceCards = document.querySelectorAll('[data-animation="fadeInUp"]');
-
     if (serviceCards.length === 0) return;
 
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry, index) {
-            if (entry.isIntersecting) {
-                setTimeout(function() {
-                    entry.target.classList.add('visible');
-                }, index * 100);
-                observer.unobserve(entry.target);
-            }
-        });
+      entries.forEach(function(entry, index) {
+        if (entry.isIntersecting) {
+          setTimeout(function() {
+            entry.target.classList.add('visible');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
     }, observerOptions);
 
     serviceCards.forEach(card => {
-        observer.observe(card);
+      observer.observe(card);
     });
+  })();
 });
 
